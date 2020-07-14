@@ -1,32 +1,95 @@
 import React, { Component } from "react";
 import { Link, Switch, Route } from "react-router-dom";
 import T1 from "../topics/T1";
-import T2 from "../topics/T2";
-import T3 from "../topics/T3";
+
 
 class Topics extends Component {
   render() {
+    const topics = [
+      {
+        name: "React Router",
+        id: "react-router",
+        description: "Declarative, component based routing for React",
+        resources: [
+          {
+            name: "URL Parameters",
+            id: "url-parameters",
+            description:
+              "URL parameters are parameters whose values are set dynamically in a page's URL. This allows a route to render the same component while passing that component the dynamic portion of the URL so it can change based off of it.",
+            url: "https://ui.dev/react-router-url-parameters/",
+          },
+          {
+            name: "Programmatically navigate",
+            id: "programmatically-navigate",
+            description:
+              "When building an app with React Router, eventually you'll run into the question of navigating programmatically. The goal of this post is to break down the correct approaches to programmatically navigating with React Router.",
+            url: "https://ui.dev/react-router-programmatically-navigate/",
+          },
+        ],
+      },
+      {
+        name: "React.js",
+        id: "reactjs",
+        description: "A JavaScript library for building user interfaces",
+        resources: [
+          {
+            name: "React Lifecycle Events",
+            id: "react-lifecycle",
+            description:
+              "React Lifecycle events allow you to tie into specific phases of a components lifecycle",
+            url:
+              "https://ui.dev/an-introduction-to-life-cycle-events-in-react-js/",
+          },
+          {
+            name: "React AHA Moments",
+            id: "react-aha",
+            description: "A collection of 'Aha' moments while learning React.",
+            url: "https://ui.dev/react-aha-moments/",
+          },
+        ],
+      },
+      {
+        name: "Functional Programming",
+        id: "functional-programming",
+        description:
+          "In computer science, functional programming is a programming paradigm—a style of building the structure and elements of computer programs—that treats computation as the evaluation of mathematical functions and avoids changing-state and mutable data.",
+        resources: [
+          {
+            name: "Imperative vs Declarative programming",
+            id: "imperative-declarative",
+            description:
+              "A guide to understanding the difference between Imperative and Declarative programming.",
+            url: "https://ui.dev/imperative-vs-declarative-programming/",
+          },
+          {
+            name:
+              "Building User Interfaces with Pure Functions and Function Composition",
+            id: "fn-composition",
+            description:
+              "A guide to building UI with pure functions and function composition in React",
+            url:
+              "https://ui.dev/building-user-interfaces-with-pure-functions-and-function-composition-in-react-js/",
+          },
+        ],
+      },
+    ];
+
     const { match } = this.props;
-    console.log(match.path);
+    console.log(match);
     return (
       <div>
         <h1>Topic Lists</h1>
         <ul>
-          <li key={`${T1}`}>
-            <Link to='/topics/T1'>t1</Link>
-          </li>
-          <li key={`${T2}`}>
-            <Link to={`${match.url}/T2`}>t2</Link>
-          </li>
-          <li key={`${T3}`}>
-            <Link to={`${match.url}/T3`}>t3</Link>
-          </li>
+          {topics.map(({ name, id }) => (
+            <li key={id}>
+              <Link to={`${match.url}/${id}`} name={name}>
+                {name}
+              </Link>
+            </li>
+          ))}
         </ul>
-        <Switch>
-          <Route exact path="/T1" component={T1} />
-          <Route exact path="/T2" component={T2} />
-          <Route exact path="/T3" component={T3} />
-        </Switch>
+
+        <Route path={`${match.path}/:topicId`} component={T1} />
       </div>
     );
   }
