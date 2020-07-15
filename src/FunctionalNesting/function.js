@@ -76,6 +76,7 @@ function Resource({ match }) {
     .resources.find(({ id }) => id === match.params.subId);
   console.log("Resource path", match.path);
   console.log("Resource url", match.url);
+  console.log("Resource url", match.url);
   return (
     <div
       style={{
