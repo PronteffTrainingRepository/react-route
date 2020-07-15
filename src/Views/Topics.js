@@ -89,7 +89,7 @@ class Topics extends Component {
           ))}
         </ul>
 
-        <Route path={`${match.path}/:topicId`} component={T1} />
+        <Route path={`topics/:topicId`} component={T1} />
       </div>
     );
   }

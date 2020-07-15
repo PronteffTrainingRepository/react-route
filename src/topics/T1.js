@@ -72,16 +72,16 @@ export class T1 extends Component {
         ],
       },
     ];
-    const match = this.props;
-    const topic = topics.find(({ id }) => id === match.params.topicId);
-    console.log(topic)
+    // const match = this.props;
+    // const topic = topics.find(({ id }) => id === match.params.topicId);
+    // console.log(topic)
    
     return (
       <div>
         <h1>  data</h1>
         {/* <h2>{topic.name}</h2>
         <p>{topic.description}</p> */}
-        <Link to={"/Topics"}>Back to topics</Link>
+        {/* <Link to={"/Topics"}>Back to topics</Link> */}
       </div>
     );
   }
